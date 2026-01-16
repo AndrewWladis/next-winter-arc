@@ -20,6 +20,10 @@ export default function SnowAnimation() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    // Store canvas dimensions for use in Snowflake class
+    const getCanvasWidth = () => canvas.width;
+    const getCanvasHeight = () => canvas.height;
+
     // Snowflake class
     class Snowflake {
       x: number;
@@ -30,8 +34,8 @@ export default function SnowAnimation() {
       wind: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * getCanvasWidth();
+        this.y = Math.random() * getCanvasHeight();
         this.radius = Math.random() * 3 + 1;
         this.speed = Math.random() * 2 + 0.5;
         this.opacity = Math.random() * 0.5 + 0.3;
@@ -42,15 +46,18 @@ export default function SnowAnimation() {
         this.y += this.speed;
         this.x += this.wind + Math.sin(this.y * 0.01) * 0.5;
 
-        if (this.y > canvas.height) {
+        const canvasHeight = getCanvasHeight();
+        const canvasWidth = getCanvasWidth();
+
+        if (this.y > canvasHeight) {
           this.y = 0;
-          this.x = Math.random() * canvas.width;
+          this.x = Math.random() * canvasWidth;
         }
 
-        if (this.x > canvas.width) {
+        if (this.x > canvasWidth) {
           this.x = 0;
         } else if (this.x < 0) {
-          this.x = canvas.width;
+          this.x = canvasWidth;
         }
       }
 
