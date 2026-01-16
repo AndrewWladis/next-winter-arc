@@ -124,7 +124,7 @@ export default function CalorieTracker() {
             <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
               <div
                 className={`h-3 rounded-full transition-all duration-300 ${
-                  totalCalories >= DAILY_GOAL ? 'bg-red-500' : 'bg-blue-500'
+                  totalCalories >= DAILY_GOAL ? 'bg-red-500' : 'bg-white'
                 }`}
                 style={{
                   width: `${Math.min(100, (totalCalories / DAILY_GOAL) * 100)}%`,
@@ -151,7 +151,7 @@ export default function CalorieTracker() {
                 type="text"
                 value={foodName}
                 onChange={(e) => setFoodName(e.target.value)}
-                placeholder="e.g., Apple"
+                placeholder="e.g., Pizza"
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
@@ -164,7 +164,7 @@ export default function CalorieTracker() {
                 type="number"
                 value={calories}
                 onChange={(e) => setCalories(e.target.value)}
-                placeholder="e.g., 95"
+                placeholder="e.g., 67"
                 min="1"
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -194,11 +194,10 @@ export default function CalorieTracker() {
                 className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:border-gray-600 transition-colors flex items-center justify-between"
               >
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-1">
+                  <div className="flex items-center gap-3">
                     <h3 className="text-white font-semibold text-lg">{item.name}</h3>
-                    <span className="text-blue-400 font-bold">{item.calories} cal</span>
+                    <span className="text-white font-bold">{item.calories} cal</span>
                   </div>
-                  <p className="text-gray-400 text-sm">{formatTimestamp(item.timestamp)}</p>
                 </div>
                 <button
                   onClick={() => handleDelete(item.id)}
