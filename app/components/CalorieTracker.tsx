@@ -9,6 +9,7 @@ interface FoodItem {
   timestamp: Date;
 }
 
+// Daily calorie goal — ensure prod deploys from this repo (Winter Arc = 2200)
 const DAILY_GOAL = 2200;
 
 export default function CalorieTracker() {

@@ -8,7 +8,8 @@ export default function ServiceWorkerRegistration() {
       navigator.serviceWorker
         .register('/sw.js')
         .then((registration) => {
-          console.log('Service Worker registered:', registration);
+          // Check for a new SW on every load so we don't stick on an old build (e.g. 1800 goal)
+          registration.update();
         })
         .catch((error) => {
           console.log('Service Worker registration failed:', error);
